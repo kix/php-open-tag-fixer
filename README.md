@@ -17,3 +17,9 @@ bin/console fix ./ # where ./ is the path
 ```
 
 Also you can only fix ```<?```'s and ```<?=```'s using ```-c``` and ```-e``` options respectively.
+
+To do
+-----
+Support nikic/php-parser when tokenizer is not available (is that possible?)
+
+Fix issue that deletes whitespace after opening tags (e.g. newline after first opening tag in file)
