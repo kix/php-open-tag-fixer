@@ -25,3 +25,4 @@ Support nikic/php-parser when tokenizer is not available (is that possible?)
 Fix issue that deletes whitespace after opening tags (e.g. newline after first opening tag in file)
 
 Add pattern matching
+
