@@ -1,0 +1,19 @@
+{
+    "name": "kix/open-tag-fixer",
+    "description": "A tool to automatically change PHP short-tag <?/<?= notation into valid <?php and <?php echo syntax",
+    "require": {
+        "symfony/console": "2.3.*",
+        "ext-tokenizer":   "*"
+    },
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Stepan Anchugov",
+            "email": "kixxx1@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    }
+}

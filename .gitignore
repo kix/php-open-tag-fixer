@@ -1,0 +1,4 @@
+app/phpunit.xml
+app/config/parameters.yml
+app/config/parameters_test.yml
+vendor

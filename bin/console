@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @author Stepan Anchugov <kixxx1@gmail.com>
+ */
+
+use \Kix\OpenTagFixer\OpenTagFixerApplication;
+
+include_once(__DIR__ . '/../vendor/autoload.php');
+
+$app = new OpenTagFixerApplication();
+$app->run();
