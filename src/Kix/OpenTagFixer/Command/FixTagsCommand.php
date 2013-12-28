@@ -45,6 +45,8 @@ HELP
    */
   protected function execute(InputInterface $input, OutputInterface $output)
   {
+    ini_set('short_open_tag', 'On');
+
     $path = $input->getArgument('path');
 
     $output->writeln("<info>Started fixing in path </info>\"$path\"");
@@ -73,14 +75,25 @@ HELP
    */
   private function fixShortTags($filePath)
   {
-    $content = file_get_contents($filePath);
-    $tokens = token_get_all($content);
+    $code = file_get_contents($filePath);
+    $result = $this->processCode($code);
+    file_put_contents($filePath, $result);
+  }
+
+  /**
+   * @param string $code
+   */
+  public function processCode($code)
+  {
+    $tokens = token_get_all($code);
 
     $output = '';
+    $matches = array();
 
     foreach($tokens as $token) {
       if (is_array($token)) {
         list($index, $code, $line) = $token;
+
         switch($index) {
           case T_OPEN_TAG_WITH_ECHO:
             $output .= '<?php echo ';
@@ -92,12 +105,17 @@ HELP
             $output .= $code;
             break;
         }
+
+        if ($index == T_OPEN_TAG && preg_match('/[\n\r]$/', $code, $matches)) {
+          $output .= "\r\n";
+        }
+
       } else {
         $output .= $token;
       }
     }
 
-    file_put_contents($filePath, $output);
+    return $output;
   }
 
 } 
