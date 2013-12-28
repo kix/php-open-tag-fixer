@@ -88,7 +88,6 @@ HELP
     $tokens = token_get_all($code);
 
     $output = '';
-    $matches = array();
 
     foreach($tokens as $token) {
       if (is_array($token)) {
@@ -106,10 +105,9 @@ HELP
             break;
         }
 
-        if ($index == T_OPEN_TAG && preg_match('/[\n\r]$/', $code, $matches)) {
+        if ($index == T_OPEN_TAG && preg_match('/[\n\r]$/', $code)) {
           $output .= "\r\n";
         }
-
       } else {
         $output .= $token;
       }
